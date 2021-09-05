@@ -7,6 +7,7 @@ services:
     container_name: blackhole-logger
     hostname: blackhole-logger
     restart: unless-stopped
+    command: gunicorn --bind 0.0.0.0:5000 wsgi:app
     volumes:
       - .:/app
     ports:
