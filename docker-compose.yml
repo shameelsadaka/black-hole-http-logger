@@ -6,6 +6,7 @@ services:
       dockerfile: Dockerfile
     container_name: blackhole-logger
     hostname: blackhole-logger
+    restart: unless-stopped
     volumes:
       - .:/app
     ports:
