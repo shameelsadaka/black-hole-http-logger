@@ -1,0 +1,13 @@
+version: '3'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: blackhole-logger
+    hostname: blackhole-logger
+    volumes:
+      - .:/app
+    ports:
+      - 9999:5000
+

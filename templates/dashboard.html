@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>Requests</title>    
+    </head>
+    <body>
+        {% for log  in logs %}  
+            <div>
+                <h3>
+                    {{log['method']}}
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    {{log['path']}}
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    {{log['time']|timestamp_to_datetime}}
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    {{log['ip']}}
+                </h3>
+                <p><b>Headers</b> : {{log['headers']}}</p>
+                <p><b>Body</b> : {{log['body']}}</p>
+                <hr/>
+            </div>
+        {% endfor %}  
+    </body>
+</html>
