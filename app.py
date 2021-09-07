@@ -32,7 +32,7 @@ def num_of_logs():
 @app.route('/dashboard/')
 @requires_auth
 def dashboard():
-    return render_template('dashboard.html', logs=LOGS[::-1], name="melvin")  
+    return render_template('dashboard.html', logs=LOGS[::-1])  
 
 
 @app.route('/log/<path:path>', methods=HTTP_METHODS)
