@@ -21,15 +21,18 @@ HTTP_METHODS = ['GET', 'HEAD', 'POST', 'PUT', 'DELETE', 'CONNECT', 'OPTIONS', 'T
 
 @app.template_filter()
 def timestamp_to_datetime(timestamp):
-    return datetime.fromtimestamp(timestamp).strftime("%Y %B %d %H:%M:%S" )   
+    return datetime.fromtimestamp(timestamp).strftime("%Y %B %d %H:%M:%S" )
 
+@app.context_processor
+def num_of_logs():
+    return dict(num = len(LOGS))
 
 
 @app.route('/dashboard')
 @app.route('/dashboard/')
 @requires_auth
 def dashboard():
-    return render_template('dashboard.html', logs=LOGS[::-1])  
+    return render_template('dashboard.html', logs=LOGS[::-1], name="melvin")  
 
 
 @app.route('/log/<path:path>', methods=HTTP_METHODS)

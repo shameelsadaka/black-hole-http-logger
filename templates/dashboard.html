@@ -1,23 +1,59 @@
 <html>
     <head>
-        <title>Requests</title>    
-    </head>
+        <title>Requests</title>
+        <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">    
+    <style>
+      .card-header{
+        display: flex;
+        justify-content: space-between;
+      }
+      h2{
+        text-align: center;
+      }
+    </style>
+</head>
     <body>
-        {% for log  in logs %}  
-            <div>
-                <h3>
-                    {{log['method']}}
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    {{log['path']}}
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    {{log['time']|timestamp_to_datetime}}
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    {{log['ip']}}
-                </h3>
-                <p><b>Headers</b> : {{log['headers']}}</p>
-                <p><b>Body</b> : {{log['body']}}</p>
-                <hr/>
+      
+        <div class="container mt-4">
+          <h2 class="my-1">Request Logger</h2>
+          <hr>
+          <h4>Showing {{num}} logs</h4>
+
+        {% for log  in logs %} 
+        <div class="card my-3 flex-column">
+            <div class="card-header">
+                <h5 class="method-basic-details">
+          
+                      {{log['method']}}
+                      &nbsp;&nbsp;&nbsp;&nbsp;
+            
+                      {{log['path']}}
+                      &nbsp;&nbsp;&nbsp;&nbsp;
+                      {{log['time']|timestamp_to_datetime}}
+                      &nbsp;&nbsp;&nbsp;&nbsp;
+                      {{log['ip']}}
+                </h5>
+                <a class="btn btn-primary details-button" data-bs-toggle="collapse" href="#collapseDetails{{logs.index(log)}}" role="button" aria-expanded="false" aria-controls="collapseDetails{{logs.index(log)}}">More Details</a>
             </div>
-        {% endfor %}  
+            <div class="collapse" id="collapseDetails{{logs.index(log)}}">
+                <div class="card-body">
+              <h5 class="card-title"><p><b>Headers</b> : {{log['headers']}}</p></h5>
+              <p class="card-text"><p><b>Body</b> : {{log['body']}}</p></p>
+              
+            </div>
+        </div>        
+          </div> 
+
+
+            {% endfor %}
+        </div> 
+
+        <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script> 
+   
     </body>
 </html>
