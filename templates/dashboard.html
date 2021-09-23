@@ -11,6 +11,10 @@
       .accordion-button {
         background-color: #e7f1ff;
       }
+
+      .accordion-body {
+        overflow-wrap: break-word;
+      }
     </style>
     
 </head>
@@ -50,7 +54,7 @@
             <div class="accordion-body">
                 
                 <h5 class="card-title"><p><b>Headers</b> : {{log['headers']}}</p></h5>
-              <p class="card-text"><p><b>Body</b> : {{log['body']}}</p></p>
+              <p class="card-title"><p><b>Body</b> : {{log['body']}}</p></p>
             </div>
           </div>
         </div>
