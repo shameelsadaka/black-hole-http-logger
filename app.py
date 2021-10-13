@@ -21,8 +21,11 @@ HTTP_METHODS = ['GET', 'HEAD', 'POST', 'PUT', 'DELETE', 'CONNECT', 'OPTIONS', 'T
 
 @app.template_filter()
 def timestamp_to_datetime(timestamp):
-    return datetime.fromtimestamp(timestamp).strftime("%Y %B %d %H:%M:%S" )   
+    return datetime.fromtimestamp(timestamp).strftime("%Y %B %d %H:%M:%S" )
 
+@app.context_processor
+def num_of_logs():
+    return dict(num = len(LOGS))
 
 
 @app.route('/dashboard')
